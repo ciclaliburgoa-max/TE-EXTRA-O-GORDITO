@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UNA ÚLTIMA VEZ</title>
+<style>
+body{margin:0;display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(#ffd6e7,#fff);overflow:hidden;font-family:Georgia}
+.heart{position:fixed;font-size:20px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh);opacity:0}}
+#sobre{font-size:120px;cursor:pointer;transition:.5s}
+#carta{display:none;max-width:760px;background:#fff;padding:30px;border-radius:16px;box-shadow:0 0 20px #999}
+h1{text-align:center;color:#c2185b}#texto{white-space:pre-wrap;line-height:1.7}
+#pregunta{display:none;text-align:center}button{padding:12px 24px;font-size:20px;margin:10px}
+#si{background:#e91e63;color:#fff}#no{background:#999;color:#fff}
+</style></head><body>
+<div id="sobre">💌</div>
+<div id="carta"><h1>UNA ULTIMA VEZ</h1><div id="texto"></div><div id="pregunta"><h2>¿Y si nos arriesgamos y lo intentamos de nuevo?</h2><button id="si" onclick="ok()">Sí ❤️</button><button id="no">No</button></div></div>
+<audio id="musica" loop><source src="The Police - Every Breath You Take (Lyrics).mp3" type="audio/mpeg"></audio>
+<script>
+setInterval(()=>{let h=document.createElement('div');h.className='heart';h.textContent='🌹';h.style.left=Math.random()*100+'vw';h.style.animationDuration=(3+Math.random()*4)+'s';document.body.appendChild(h);setTimeout(()=>h.remove(),7000)},400);
+const t=`Nos hemos hecho mucho daño pero creeme yo daria todo para que tu y yo pudieramos estar juntos otra vez, a pesar de los errores y las heridas todavía creo en nosotros, quiero arreglar las cosas, quiero sanar y crecer juntos y que cumplamos nuestras todas nuestras promesas, se que pasamos por momentos muy dificiles que nos lastimaron profundamente pero en el fondo se que el amor sigue ahí, sigue ahí esperandonos, quiero que sepas que estoy dispuesta a reconstruir todo lo que teníamos, porque yo quiero un futuro contigo y si claro que podemos tenerlo, se que no sera facil requerira tiempo, esfuerzo y paciencia pero estoy dispuesta porque creo que nuestro amor vale la pena. ❤️`;
+let i=0,s=1;
+sobre.onclick=()=>{sobre.style.display='none';carta.style.display='block';musica.play().catch(()=>{});(function w(){if(i<t.length){texto.textContent+=t[i++];setTimeout(w,35)}else pregunta.style.display='block'})()}
+no.onmouseover=()=>{s+=.25;si.style.transform='scale('+s+')';no.style.position='absolute';no.style.left=Math.random()*(innerWidth-100)+'px';no.style.top=Math.random()*(innerHeight-50)+'px';}
+function ok(){document.body.innerHTML='<div style="display:flex;height:100vh;align-items:center;justify-content:center;font-size:42px;color:#c2185b;text-align:center">❤️ Gracias por decir que sí ❤️<br><br>Prometo cuidar esta nueva oportunidad.</div>'}
+</script></body></html>
